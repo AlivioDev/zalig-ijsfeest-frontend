@@ -1,14 +1,13 @@
 import "./Button.css";
 import React from "react";
 
-function NavButton({description}) {
+function Button({description}) {
      return(
          <button
-             type="button"
              className="button">
              {description}
          </button>
      )
 }
 
-export default NavButton;
+export default Button;

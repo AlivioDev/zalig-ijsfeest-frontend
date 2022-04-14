@@ -1,7 +1,7 @@
 import "./Header.css";
 import {Route, useHistory} from "react-router-dom";
 import Logo from "../logo/Logo";
-import NavButton from "../button/NavButton";
+import Button from "../button/Button";
 import Home from "../../pages/home/Home";
 
 function Header() {
@@ -21,19 +21,22 @@ function Header() {
                     <nav>
                         <ul className="header-navigation">
                             <li>
-                                <NavButton
+                                <Button
+                                    type="button"
                                     onClick={Home}
                                     description="Home"
                                     />
                             </li>
                             <li>
-                                <NavButton
+                                <Button
+                                    type="button"
                                     onClick={() => history.goBack()}
                                     description="Vorige pagina"
                                 />
                             </li>
                             <li>
-                                <NavButton
+                                <Button
+                                    type="button"
                                     // onClick={logout}
                                     description="Uitloggen"
                                 />
