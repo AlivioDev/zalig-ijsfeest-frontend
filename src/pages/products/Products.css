@@ -1,10 +1,1 @@
-.product-card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 5px
-}
 
-.product-card div {
-    margin: 5px;
-}
