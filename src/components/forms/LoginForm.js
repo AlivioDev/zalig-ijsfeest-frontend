@@ -10,12 +10,14 @@ function LoginForm() {
 
     return (
         <div className="forms-container">
-            <h2>Inloggen: </h2>
+
 
             <form onSubmit={handleSubmit(onSubmit)}>
-
+                <h2>Inloggen: </h2>
+                <section className="form-section">
                 <label htmlFor="username">
                     Gebruikersnaam:
+                </label>
                     <input
                         type="text"
                         placeholder="Vul de gebruikersnaam in die u gekozen heeft"
@@ -35,10 +37,12 @@ function LoginForm() {
                         )}
                     />
                     {errors.username && <p>{errors.username.message}</p>}
-                </label>
+                </section>
 
+                <section className="form-section">
                 <label htmlFor="password">
                     Wachtwoord:
+                </label>
                     <input
                         type="password"
                         placeholder="Vul het wachtwoord in dat u gekozen heeft"
@@ -58,7 +62,7 @@ function LoginForm() {
                         )}
                     />
                     {errors.password && <p>{errors.password.message}</p>}
-                </label>
+                </section>
 
                 <div className="home-button">
                     <Button

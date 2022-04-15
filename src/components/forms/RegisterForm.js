@@ -10,12 +10,15 @@ function RegisterForm() {
 
     return (
         <div className="forms-container">
-            <h2>Indien u nog geen login gegevens heeft kun u zich hier registreren: </h2>
+
 
             <form onSubmit={handleSubmit(onSubmit)}>
+                <h2>Indien u nog geen login gegevens heeft kun u zich hier registreren: </h2>
 
+                <section className="form-section">
                 <label htmlFor="firstName">
                     Voornaam:
+                </label>
                     <input
                         type="text"
                         {...register(
@@ -34,10 +37,12 @@ function RegisterForm() {
                         )}
                     />
                     {errors.firstName && <p>{errors.firstName.message}</p>}
-                </label>
+                </section>
 
+                <section className="form-section">
                 <label htmlFor="lastName">
                     Achternaam:
+                </label>
                     <input
                         type="text"
                         {...register(
@@ -56,10 +61,12 @@ function RegisterForm() {
                         )}
                     />
                     {errors.lastName && <p>{errors.lastName.message}</p>}
-                </label>
+                </section>
 
+                <section className="form-section">
                 <label htmlFor="phone">
                     Telefoonnummer:
+                </label>
                     <input
                         type="tel"
                         {...register(
@@ -78,10 +85,12 @@ function RegisterForm() {
                         )}
                     />
                     {errors.phone && <p>{errors.phone.message}</p>}
-                </label>
+                </section>
 
+                <section className="form-section">
                 <label htmlFor="email">
                     E-mail adres:
+                </label>
                     <input
                         type="email"
                         {...register(
@@ -93,10 +102,12 @@ function RegisterForm() {
                             })}
                     />
                     {errors.email && <p>{errors.email.message}</p>}
-                </label>
+                </section>
 
+                <section className="form-section">
                 <label htmlFor="username">
                     Gebruikersnaam:
+                </label>
                     <input
                         type="text"
                         placeholder="Kies een gebruikersnaam van minimaal 6 karakters"
@@ -116,10 +127,12 @@ function RegisterForm() {
                         )}
                     />
                     {errors.username && <p>{errors.username.message}</p>}
-                </label>
+                </section>
 
+                <section className="form-section">
                 <label htmlFor="password">
                     Wachtwoord:
+                </label>
                     <input
                         type="password"
                         placeholder="Kies een wachtwoord van minimaal 6 karakters"
@@ -139,7 +152,7 @@ function RegisterForm() {
                         )}
                     />
                     {errors.password && <p>{errors.password.message}</p>}
-                </label>
+                </section>
 
                 <div className="home-button">
                     <Button

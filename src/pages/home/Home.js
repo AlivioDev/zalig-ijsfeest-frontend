@@ -9,6 +9,7 @@ function Home() {
     return (
         <>
             <h1>Welkom bij Zalig Ysfeest!</h1>
+
             <LoginForm/>
 
             <RegisterForm/>

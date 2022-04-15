@@ -9,7 +9,7 @@ import Pickup from "./pages/pickup/Pickup";
 import Products from "./pages/products/Products";
 import Selection from "./pages/selection/Selection";
 import ShoppingCart from "./pages/shoppingcart/ShoppingCart";
-import UserAccount from "./pages/useraccount/UserAccount";
+import Profile from "./pages/profile/Profile";
 
 function App() {
     return (
@@ -44,8 +44,8 @@ function App() {
                         <Route path="/pickup">
                             <Pickup/>
                         </Route>
-                        <Route path="useraccount">
-                            <UserAccount/>
+                        <Route path="/profile">
+                            <Profile/>
                         </Route>
                     </Switch>
                 </section>

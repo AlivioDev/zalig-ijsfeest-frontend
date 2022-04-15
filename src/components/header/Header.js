@@ -3,6 +3,7 @@ import {Route, useHistory} from "react-router-dom";
 import Logo from "../logo/Logo";
 import Button from "../button/Button";
 import Home from "../../pages/home/Home";
+import Profile from "../../pages/profile/Profile";
 
 function Header() {
     const history = useHistory();
@@ -10,10 +11,7 @@ function Header() {
     return (
         <>
             <header className="header-outer-container">
-                <div
-                    className="header-logo">
-                    <Route path="/" component={Logo}/>
-                </div>
+
 
                 <div className="header-inner-container">
 
@@ -37,12 +35,23 @@ function Header() {
                             <li>
                                 <Button
                                     type="button"
+                                    onClick={Profile}
+                                    description="Mijn Profiel"
+                                />
+                            </li>
+                            <li>
+                                <Button
+                                    type="button"
                                     // onClick={logout}
                                     description="Uitloggen"
                                 />
                             </li>
                         </ul>
                     </nav>
+                    <div
+                        className="header-logo">
+                        <Route path="/" component={Logo}/>
+                    </div>
                 </div>
             </header>
 
