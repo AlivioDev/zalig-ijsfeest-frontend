@@ -1,0 +1,23 @@
+.flavor-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+    /*border-style: solid;*/
+    /*border-color: black;*/
+}
+
+.flavor-checkbox {
+    width: fit-content;
+    margin: 5px 10px 5px 5px;
+}
+
+.flavor-label {
+    width: fit-content;
+    margin-bottom: 3px;
+}
+
+
+.flavor-checkbox:checked + .flavor-label {
+    font-weight: bold;
+}

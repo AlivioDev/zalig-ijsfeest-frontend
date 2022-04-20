@@ -10,15 +10,13 @@ import Products from "./pages/products/Products";
 import Selection from "./pages/selection/Selection";
 import ShoppingCart from "./pages/shoppingcart/ShoppingCart";
 import Profile from "./pages/profile/Profile";
+import SignUpSuccess from "./pages/signupsuccess/SignUpSuccess";
 
 function App() {
     return (
     <div>
             <Header/>
 
-            <div className="app-outer-container">
-            <div className="app-inner-container">
-                <section className="body">
                     <Switch>
                         <Route exact path="/">
                             <Home/>
@@ -47,10 +45,11 @@ function App() {
                         <Route path="/profile">
                             <Profile/>
                         </Route>
+                        <Route path="/signup-success">
+                            <SignUpSuccess/>
+                        </Route>
                     </Switch>
-                </section>
-            </div>
-            </div>
+
     </div>
 
     );

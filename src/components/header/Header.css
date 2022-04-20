@@ -15,20 +15,12 @@
     flex-grow: 0;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding-top: 10px;
-}
-
 .header-navigation {
     list-style: none;
     padding: 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    flex-basis: 700px;
+    justify-content: flex-end;
     flex-shrink: 1;
     flex-grow: 0;
 }

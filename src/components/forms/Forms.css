@@ -1,22 +1,24 @@
 .forms-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-basis: auto;
+    flex-direction: row;
+    justify-content: center;
+    flex-basis: 100px;
     flex-shrink: 1;
     flex-grow: 0;
+    /*border-style: solid;*/
+    /*border-color: black;*/
 }
 
-h2  {
-    display: inline;
+.form-title  {
     font-weight: bolder;
     margin: 20px;
+    text-align: center;
 }
 
-form {
+.account-form {
     display: flex;
     flex-direction: column;
-    min-width: 100%;
+    flex-basis: 1000px;
     flex-shrink: 1;
     flex-grow: 0;
     margin: 10px;
@@ -25,11 +27,11 @@ form {
 }
 
 .form-section {
-    display: inline-block;
+    display: block;
     padding: 10px;
+    width: 100%;
     /*border-style: solid;*/
     /*border-color: orange;*/
-    width: 100%;
 }
 
 input {
@@ -47,10 +49,22 @@ input:focus {
     box-shadow: 8px 8px 12px 0 rgba(0, 0.3, 0, 0.3);
 }
 
-.home-button {
+.login-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px auto;
+}
+
+.register-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.form-error {
+    text-align: center;
+    color: darkred;
 }
 
