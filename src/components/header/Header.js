@@ -1,51 +1,53 @@
 import "./Header.css";
-import {Route, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import Logo from "../logo/Logo";
 import Button from "../button/Button";
-import Home from "../../pages/home/Home";
+import {useContext} from "react";
+import {AuthContext} from "../../context/AuthContext";
 
 function Header() {
     const history = useHistory();
+    const {isAuth, logout} = useContext((AuthContext));
 
     return (
         <>
             <header className="header-outer-container">
-                <div
-                    className="header-logo">
-                    <Route path="/" component={Logo}/>
-                </div>
-
                 <div className="header-inner-container">
-
-
-                    <nav>
-                        <ul className="header-navigation">
-                            <li>
+                    <nav className="header-navigation">
+                        {isAuth &&
+                            <>
                                 <Button
+                                    onClick={() => history.push("/")}
                                     type="button"
-                                    onClick={Home}
                                     description="Home"
-                                    />
-                            </li>
-                            <li>
+                                />
+
                                 <Button
-                                    type="button"
                                     onClick={() => history.goBack()}
+                                    type="button"
                                     description="Vorige pagina"
                                 />
-                            </li>
-                            <li>
+
                                 <Button
+                                    onClick={() => history.push("/profile")}
                                     type="button"
-                                    // onClick={logout}
+                                    description="Mijn Profiel"
+                                />
+
+                                <Button
+                                    onClick={logout}
+                                    type="button"
                                     description="Uitloggen"
                                 />
-                            </li>
-                        </ul>
+                            </>
+                        }
                     </nav>
+                    <div
+                        className="header-logo">
+                        <Logo/>
+                    </div>
                 </div>
             </header>
-
         </>
     );
 }

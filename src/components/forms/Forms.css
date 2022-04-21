@@ -1,61 +1,70 @@
 .forms-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex-basis: auto;
-    flex-shrink: 1;
-    flex-grow: 0;
-}
-
-h2  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: bolder;
-    margin-bottom: 20px;
-    flex-basis: auto;
-    flex-shrink: 1;
-    flex-grow: 0;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    min-width: 750px;
-    flex-basis: auto;
-    flex-shrink: 1;
-    flex-grow: 0;
-}
-
-label {
-    display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    margin: 10px;
-    flex-basis: auto;
+    justify-content: center;
+    flex-basis: 100px;
     flex-shrink: 1;
     flex-grow: 0;
+    /*border-style: solid;*/
+    /*border-color: black;*/
+}
+
+.form-title  {
+    font-weight: bolder;
+    margin: 20px;
+    text-align: center;
+}
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 1000px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin: 10px;
+    /*border-style: solid;*/
+    /*border-color: red;*/
+}
+
+.form-section {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    /*border-style: solid;*/
+    /*border-color: orange;*/
 }
 
 input {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    flex-basis: 550px;
+    float: right;
     border-style: hidden;
     border-radius: 5px;
     padding-left: 5px;
-    flex-shrink: 1;
-    flex-grow: 0;
+    margin: auto;
+    width: 75%;
+    box-shadow: 6px 6px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.home-button {
+input:focus {
+    outline: none;
+    box-shadow: 8px 8px 12px 0 rgba(0, 0.3, 0, 0.3);
+}
+
+.login-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px auto;
+}
+
+.register-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.form-error {
+    text-align: center;
+    color: darkred;
 }
 

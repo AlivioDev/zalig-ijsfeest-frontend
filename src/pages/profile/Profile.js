@@ -1,7 +1,7 @@
 import React from "react";
-import "./UserAccount.css"
+import "./Profile.css"
 
-function UserAccount() {
+function Profile() {
 
     return(
         <div>
@@ -10,4 +10,4 @@ function UserAccount() {
     )
 }
 
-export default UserAccount;
+export default Profile;

@@ -1,10 +1,31 @@
-.product-card {
+.products-outer-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    margin: 5px
+    justify-content: center;
+    height: 100vh;
+    background-color: #007FFF;
+    background-image:
+            linear-gradient(to right, #007FFF, #40bfd2);
+    border-style: solid;
+    border-color: black;
 }
 
-.product-card div {
-    margin: 5px;
+.products-inner-container {
+    display: flex;
+    flex-basis: 1200px;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 0;
+    border-style: solid;
+    border-color: springgreen;
 }
+
+
+h2  {
+    font-weight: bolder;
+    text-align: center;
+    margin: 20px;
+}
+
+
+
