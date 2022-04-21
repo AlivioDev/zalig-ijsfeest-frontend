@@ -4,6 +4,10 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import Button from "../button/Button";
 
+/*benodigde dependecies:
+    "ag-grid-community": "^27.2.0",
+    "ag-grid-react": "^27.2.0",
+    als install niet lukt, dan eerst beiden versie 27.1.0 installeren en daarna lukt 27.2 wel */
 
 function GridTable() {
 

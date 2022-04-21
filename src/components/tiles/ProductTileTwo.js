@@ -1,81 +1,104 @@
-// import React, {useState, useEffect} from "react";
 import "./ProductTileTwo.css";
-// import axios from "axios";
-import Logo from "../logo/Logo";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
-// import Button from "../button/Button";
-// import Selection from "../../pages/selection/Selection";
-// import {Link} from "react-router-dom";
+import axios from "axios";
+import {numberFormat} from "../../helpers/PriceFormat";
 
 
-function ProductTileOne() {
+function ProductTileTwo() {
+    const [product, setProduct] = useState([]);
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
-    const onSubmit = data => console.log(data);
-    console.log(errors);
+    useEffect(() => {
+        async function getProduct() {
+            try {
+                const result = await
+                    axios.get('http://localhost:8080/open/products/8');
+                console.log(result);
+                setProduct(result.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getProduct();
+    }, []);
 
-    // function ProductTileOne({endpoint}) {
-    // const [productTile, setProductTile] = useState(null);
-    //
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         try {
-    //             const result = await
-    //                 axios.get(`${endpoint}`);
-    //             console.log(result.data);
-    //             setProductTile(result.data);
-    //         } catch (e) {
-    //             console.error(e);
-    //         }
-    //     }
-    //
-    //     fetchData();
-    // }, [endpoint]);
 
+    const {register, watch} = useForm();
+    const selectedReferrer = watch("aantal personen");
 
     return (
         <>
-            {/*<div>*/}
-            {/*    {productTile &&*/}
-            {/*            <h4>{productTile.productName}</h4>*/}
-            {/*        <div className="tile">*/}
-            {/*            <img src={productTile.image} alt={`${productTile.productName}`}/>*/}
-            {/*        </div>*/}
-            {/*    }*/}
-            {/*</div>*/}
-
             <div className="tile-two-outer-container">
-                <div className="tile-two-inner-container">
-                    <h2> naam ijstaart</h2>
+                {product &&
+                    <div className="tile-two-inner-container">
+                        <div>
+                            <h2 key={product.id}>
+                                {product.productName}
+                            </h2>
+                        </div>
 
-                    <form className="option-dropdown" onSubmit={handleSubmit(onSubmit)}>
-                        <p className="explanatory-notes">
-                            kies het aantal personen:
-                        </p>
-                        <select
-                            {...register
-                            ("aantal personen",
-                                {
-                                    required: true
-                                })}>
-                            <option
-                                value="optionOne">
-                                4/6 personen € 20,00
-                            </option>
-                            <option value="optionTwo">
-                                8/10 personen € 26,50
-                            </option>
-                            <option value="optionThree">
-                                14/16 personen € 39,50
-                            </option>
-                        </select>
-                    </form>
-                </div>
-                <Logo/>
+                        <div className="option-dropdown">
+                            <p className="explanatory-notes">
+                                kies het aantal personen:
+                            </p>
+                            <select
+                                {...register
+                                ("aantal personen",
+                                    {
+                                        required: true
+                                    })}>
+                                <option
+                                    value="optionOne"
+                                    disabled={product.numberOfPersonsOne === null}
+                                >
+                                    {product.numberOfPersonsOne ?
+                                        `${product.numberOfPersonsOne}    ${numberFormat((product.priceOne))}`
+                                        : ""}
+                                </option>
+
+                                <option
+                                    value="optionTwo"
+                                    disabled={product.numberOfPersonsTwo === null}
+                                >
+                                    {product.numberOfPersonsTwo ?
+                                        `${product.numberOfPersonsTwo}    ${numberFormat((product.priceTwo))}`
+                                        : ""}
+                                </option>
+
+                                <option
+                                    value="optionThree"
+                                    disabled={product.numberOfPersonsThree === null}
+                                >
+                                    {product.numberOfPersonsThree ?
+                                        `${product.numberOfPersonsThree}    ${numberFormat((product.priceThree))}`
+                                        : ""}
+                                </option>
+                                <option
+                                    value="profiteroles"
+                                    disabled= {product.perPerson === null}
+                                >
+                                    {product.perPerson ?
+                                        `Vanaf 6 personen   ${numberFormat((product.priceOne))}`
+                                        : ""}
+                                </option>
+                            </select>
+
+                            {selectedReferrer === "profiteroles" &&
+                                <input
+                                    type="number"
+                                    defaultValue={6}
+                                    min={6}
+                                    {...register("personen")}
+                                />
+                            }
+                        </div>
+                    </div>
+                }
+                <img src={product.image} alt={`foto van ${product.productName}`}/>
             </div>
+
         </>
     );
 }
 
-export default ProductTileOne;
+export default ProductTileTwo;

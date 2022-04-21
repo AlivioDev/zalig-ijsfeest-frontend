@@ -10,24 +10,29 @@ function LoginForm() {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const {login} = useContext(AuthContext);
 
-    function onFormSubmit(username, password) {
-        console.log(username, password);
-        userLogin(username, password);
-        // console.log(errors);
+    const [userDetails, setUserDetails] = useState({
+        username: "",
+        password: "",
+    })
+
+    function onFormSubmit(event) {
+        event.preventDefault();
+        setUserDetails({
+            ...userDetails,
+            username: "",
+            password: "",
+        });
+        console.log(userDetails);
+        console.log(errors);
     }
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
 
     const history = useHistory();
 
-    async function userLogin(username, password) {
+    async function userLogin() {
         try {
             const result = await axios.post("http://localhost:8080/auth",
-                {
-                    username: username,
-                    password: password,
-                })
+                {userDetails})
             console.log(result.data);
             login(result.data.accessToken);
             history.push("/products")
@@ -35,11 +40,12 @@ function LoginForm() {
             console.error(error);
         }
     }
+    userLogin();
 
 
     return (
         <div className="forms-container">
-            <form className="account-form" onSubmit={handleSubmit(onFormSubmit)}>
+            <form className="account-form" >
                 <h2 className="form-title">Inloggen: </h2>
                 <section className="form-section">
                 <label htmlFor="username">
@@ -47,7 +53,8 @@ function LoginForm() {
                 </label>
                     <input
                         type="text"
-                        onChange={(e)=> setUsername(e.target.value)}
+                        value={userDetails.username}
+                        onChange={onFormSubmit}
                         placeholder="Vul de gebruikersnaam in die u gekozen heeft"
                         {...register(
                             "username",
@@ -75,7 +82,8 @@ function LoginForm() {
                 </label>
                     <input
                         type="password"
-                        onChange={(e)=> setPassword(e.target.value)}
+                        value={userDetails.password}
+                        onChange={onFormSubmit}
                         placeholder="Vul het wachtwoord in dat u gekozen heeft"
                         {...register(
                             "password",
