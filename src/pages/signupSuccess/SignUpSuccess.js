@@ -9,7 +9,7 @@ function SignUpSuccess() {
         <>
             <div className="home-outer-container">
                 <div className="home-inner-container">
-                    <h2>Registratie succesvol, u kunt nu inloggen:</h2>
+                    <h2 className="succes">Registratie succesvol, u kunt nu inloggen:</h2>
 
                     <LoginForm/>
 

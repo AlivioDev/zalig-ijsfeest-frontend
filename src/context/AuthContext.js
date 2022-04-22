@@ -17,45 +17,7 @@ function AuthContextProvider({children}) {
 
         if (token) {
             const decodedToken = jwt_decode(token);
-
-            async function fetchUserData() {
-                try {
-                    const response = await axios.get(`http://localhost:8080/users/${decodedToken.sub}`, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                        }
-                    });
-                    // console.log(response);
-                    setAuth({
-                        ...auth,
-                        isAuth: true,
-                        user: {
-                            password: response.data.password,
-                            username: response.data.username,
-                            // id: response.data.id,
-                        },
-                        status: "done",
-                    });
-                } catch (e) {
-                    console.error(e);
-
-                    if (e.response.status === 500) {
-                        console.log("De server deed het niet");
-                    } else if (e.response.status === 404) {
-                        console.log("De developer heeft iets doms gedaan in het request");
-                    } else {
-                        console.log("Het ging mis. Geen idee wat.");
-                    }
-
-                    setAuth({
-                        ...auth,
-                        status: "done",
-                    });
-                }
-            }
-
-            fetchUserData();
+            fetchUserData(decodedToken, token);
         } else {
             setAuth({
                 ...auth,
@@ -64,20 +26,59 @@ function AuthContextProvider({children}) {
         }
     }, []);
 
+    async function fetchUserData(decodedToken, token) {
+        try {
+            const response = await axios.get(`http://localhost:8080/users/${decodedToken.sub}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            console.log(response);
+            setAuth({
+                ...auth,
+                isAuth: true,
+                user: {
+                    password: response.data.password,
+                    username: response.data.username,
+                    id: response.data.id,
+                },
+                status: "done",
+            });
+        } catch (e) {
+            console.error(e);
+
+            if (e.response.status === 500) {
+                console.log("De server deed het niet");
+            } else if (e.response.status === 404) {
+                console.log("De developer heeft iets doms gedaan in het request");
+            } else {
+                console.log("Het ging mis. Geen idee wat.");
+            }
+
+            setAuth({
+                ...auth,
+                status: "done",
+            });
+        }
+    }
+
+
     const history = useHistory();
 
     function login(jwtToken) {
 
         localStorage.setItem("token", jwtToken);
         const decodedToken = jwt_decode(jwtToken);
-        // console.log(decodedToken);
-        // console.log("Gebruiker is ingelogd!");
+        console.log(decodedToken);
+        console.log("Gebruiker is ingelogd!");
+        fetchUserData(decodedToken, jwtToken);
 
         setAuth({
             ...auth,
             isAuth: true,
             user: {
-                password: decodedToken.password,
+                username: decodedToken.username,
             }
         });
 

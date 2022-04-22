@@ -14,7 +14,7 @@ function Header() {
             <header className="header-outer-container">
                 <div className="header-inner-container">
                     <nav className="header-navigation">
-                        {isAuth &&
+                        {/*{isAuth &&*/}
                             <>
                                 <Button
                                     onClick={() => history.push("/")}
@@ -40,7 +40,7 @@ function Header() {
                                     description="Uitloggen"
                                 />
                             </>
-                        }
+                        {/*}*/}
                     </nav>
                     <div
                         className="header-logo">

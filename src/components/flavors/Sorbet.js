@@ -35,7 +35,6 @@ function Sorbet() {
                                     <input
                                         className="flavor-checkbox"
                                         type="checkbox"
-                                        // placeholder="smaak"
                                         {...register
                                         ("smaak")}
                                     />

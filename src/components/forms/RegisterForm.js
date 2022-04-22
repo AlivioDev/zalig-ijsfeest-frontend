@@ -1,6 +1,6 @@
 import "./Forms.css";
 import Button from "../button/Button";
-import React, {useState} from "react";
+import React from "react";
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
@@ -9,38 +9,26 @@ import axios from "axios";
 function RegisterForm() {
     const {register, handleSubmit, formState: {errors}} = useForm();
 
-    function onFormSubmit(data) {
-        console.log(data);
-        console.log(errors);
-    }
-
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
     const history = useHistory();
 
-    async function createUser() {
+    async function onFormSubmit(data) {
         try {
-            await axios.post("http://localhost:8080/users",
+            const response = await axios.post("http://localhost:8080/open/signup",
                 {
-                    firstName: firstName,
-                    lastName: lastName,
-                    phone: phone,
-                    email: email,
-                    username: username,
-                    password: password,
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    phone: data.phone,
+                    email: data.email,
+                    username: data.username,
+                    password: data.password,
+                    role: "USER",
                 });
+            console.log(response.data);
             history.push("/signup-success");
         } catch (error) {
             console.error(error);
         }
     }
-
-    createUser();
 
 
     return (
@@ -55,7 +43,6 @@ function RegisterForm() {
                     </label>
                     <input
                         type="text"
-                        onChange={(e) => setFirstName(e.target.value)}
                         {...register(
                             "firstName",
                             {
@@ -81,7 +68,6 @@ function RegisterForm() {
                     </label>
                     <input
                         type="text"
-                        onChange={(e) => setLastName(e.target.value)}
                         {...register(
                             "lastName",
                             {
@@ -107,8 +93,7 @@ function RegisterForm() {
                         Telefoonnummer:
                     </label>
                     <input
-                        type="tel"
-                        onChange={(e) => setPhone(e.target.value)}
+                        type="text"
                         {...register(
                             "phone",
                             {
@@ -135,7 +120,6 @@ function RegisterForm() {
                     </label>
                     <input
                         type="email"
-                        onChange={(e) => setEmail(e.target.value)}
                         {...register(
                             "email",
                             {
@@ -155,8 +139,7 @@ function RegisterForm() {
                     </label>
                     <input
                         type="text"
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Minimaal 6 karakters"
+                        placeholder="Gebruik minimaal 6 karakters"
                         {...register(
                             "username",
                             {
@@ -183,7 +166,6 @@ function RegisterForm() {
                     </label>
                     <input
                         type="password"
-                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Gebruik hoofdletters, kleine letters, cijfers en !@#$%^&*-(=)+"
                         {...register(
                             "password",
