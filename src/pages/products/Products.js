@@ -1,7 +1,5 @@
-// import React, {useState, useEffect} from "react";
 import "./Products.css";
-// import axios from "axios";
-import ProductTileOne from "../../components/tiles/ProductTileOne";
+import ProductTileOne from "../../components/productTiles/ProductTileOne";
 
 function Products() {
 

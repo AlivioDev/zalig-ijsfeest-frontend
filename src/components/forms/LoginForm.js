@@ -1,60 +1,43 @@
 import "./Forms.css";
 import Button from "../button/Button";
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../context/AuthContext";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 
 function LoginForm() {
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit,formState: {errors}} = useForm();
     const {login} = useContext(AuthContext);
-
-    const [userDetails, setUserDetails] = useState({
-        username: "",
-        password: "",
-    })
-
-    function onFormSubmit(event) {
-        event.preventDefault();
-        setUserDetails({
-            ...userDetails,
-            username: "",
-            password: "",
-        });
-        console.log(userDetails);
-        console.log(errors);
-    }
-
 
     const history = useHistory();
 
-    async function userLogin() {
+    async function onFormSubmit(data) {
         try {
-            const result = await axios.post("http://localhost:8080/auth",
-                {userDetails})
-            console.log(result.data);
-            login(result.data.accessToken);
+            const result = await axios.post("http://localhost:8080/open/auth",
+                {
+                    username: data.username,
+                    password: data.password,
+                })
+            console.log(result);
+            login(result.data);
             history.push("/products")
         } catch(error){
             console.error(error);
         }
     }
-    userLogin();
-
 
     return (
         <div className="forms-container">
-            <form className="account-form" >
+            <form className="account-form" onSubmit={handleSubmit(onFormSubmit)}>
                 <h2 className="form-title">Inloggen: </h2>
+
                 <section className="form-section">
                 <label htmlFor="username">
                     Gebruikersnaam:
                 </label>
                     <input
                         type="text"
-                        value={userDetails.username}
-                        onChange={onFormSubmit}
                         placeholder="Vul de gebruikersnaam in die u gekozen heeft"
                         {...register(
                             "username",
@@ -82,8 +65,6 @@ function LoginForm() {
                 </label>
                     <input
                         type="password"
-                        value={userDetails.password}
-                        onChange={onFormSubmit}
                         placeholder="Vul het wachtwoord in dat u gekozen heeft"
                         {...register(
                             "password",
@@ -100,14 +81,13 @@ function LoginForm() {
                             }
                         )}
                     />
+                    <div className="form-error">
+                        {errors.password && <p>{errors.password.message}</p>}
+                    </div>
                 </section>
-                <div className="form-error">
-                {errors.password && <p>{errors.password.message}</p>}
-                </div>
 
                 <div className="login-button">
                     <Button
-                        className="Login"
                         type="submit"
                         description="Login"
                     />
@@ -116,6 +96,5 @@ function LoginForm() {
         </div>
     );
 }
-
 
 export default LoginForm;

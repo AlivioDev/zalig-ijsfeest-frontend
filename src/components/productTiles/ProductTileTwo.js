@@ -2,17 +2,20 @@ import "./ProductTileTwo.css";
 import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {numberFormat} from "../../helpers/PriceFormat";
+import {numberFormat} from "../../helpers/priceFormat";
+import {imagePicker} from "../../helpers/imagePicker";
+import {useParams} from "react-router-dom";
 
 
 function ProductTileTwo() {
     const [product, setProduct] = useState([]);
+    const {productId} = useParams();
 
     useEffect(() => {
         async function getProduct() {
             try {
                 const result = await
-                    axios.get('http://localhost:8080/open/products/8');
+                    axios.get(`http://localhost:8080/open/products/${productId}`);
                 console.log(result);
                 setProduct(result.data);
             } catch (error) {
@@ -20,11 +23,11 @@ function ProductTileTwo() {
             }
         }
         getProduct();
-    }, []);
+    }, [productId]);
 
 
     const {register, watch} = useForm();
-    const selectedReferrer = watch("aantal personen");
+    const selectedReferrer = watch("aantal-personen");
 
     return (
         <>
@@ -43,7 +46,7 @@ function ProductTileTwo() {
                             </p>
                             <select
                                 {...register
-                                ("aantal personen",
+                                ("aantal-personen",
                                     {
                                         required: true
                                     })}>
@@ -94,7 +97,7 @@ function ProductTileTwo() {
                         </div>
                     </div>
                 }
-                <img src={product.image} alt={`foto van ${product.productName}`}/>
+                {imagePicker((product))}
             </div>
 
         </>
