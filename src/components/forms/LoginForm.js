@@ -1,18 +1,21 @@
 import "./Forms.css";
 import Button from "../button/Button";
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../context/AuthContext";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
+import PreLoader from "../preloader/PreLoader";
 
 function LoginForm() {
+    const [loading, toggleLoading] = useState(false);
     const {register, handleSubmit,formState: {errors}} = useForm();
     const {login} = useContext(AuthContext);
 
     const history = useHistory();
 
     async function onFormSubmit(data) {
+        toggleLoading(true);
         try {
             const result = await axios.post("http://localhost:8080/open/auth",
                 {
@@ -25,10 +28,12 @@ function LoginForm() {
         } catch(error){
             console.error(error);
         }
+        toggleLoading(false);
     }
 
     return (
         <div className="forms-container">
+            {loading && <PreLoader/>}
             <form className="account-form" onSubmit={handleSubmit(onFormSubmit)}>
                 <h2 className="form-title">Inloggen: </h2>
 

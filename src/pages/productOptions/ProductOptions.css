@@ -1,23 +1,20 @@
-.selection-outer-container {
+.options-outer-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     box-sizing: border-box;
-    height: 89vh;
+    height: 100vh;
     flex-shrink: 1;
     flex-grow: 0;
-    background-color: #007FFF;
-    background-image:
-            linear-gradient(to right, #007FFF, #40bfd2);
     /*border-style: solid;*/
     /*border-color: black;*/
 }
 
-.selection-inner-container {
+.options-inner-container {
     display: flex;
     flex-basis: 1200px;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-shrink: 1;
     flex-grow: 0;
@@ -30,26 +27,22 @@
 .flavor-form {
     display: flex;
     flex-direction: column;
+    height: 80vh;
     justify-content: space-evenly;
-    flex-basis: 1000px;
+    align-items: center;
+    flex-basis: 1200px;
     flex-shrink: 1;
     flex-grow: 0;
-    margin-left: 10px;
-    margin-right: 10px;
     /*border-style: solid;*/
     /*border-color: orange;*/
-    height: 88vh;
 }
 
 .flavors-section {
     display: flex;
     flex-direction: row;
+    flex-basis: 400px;
     flex-shrink: 1;
     flex-grow: 0;
-    max-width: 1000px;
-    align-items: stretch;
-    justify-content: space-evenly;
-    margin: 10px;
     /*border-style: solid;*/
     /*border-color: black;*/
 }
@@ -57,7 +50,16 @@
 .ice-cream-outer-container {
     display: flex;
     flex-direction: column;
-    flex-basis: 400px;
+    align-items: center;
+    flex-basis: 900px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: blue;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
     /*border-style: solid;*/
     /*border-color: springgreen;*/
 }
@@ -67,7 +69,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(9, 1fr);
     grid-column-gap: 10px;
-    grid-row-gap: 0px;
+    grid-row-gap: 0;
     /*border-style: solid;*/
     /*border-color: red;*/
 }
@@ -77,16 +79,22 @@
     flex-direction: column;
     align-items: center;
     flex-basis: 300px;
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
+    flex-shrink: 1;
+    flex-grow: 0;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: blue;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .sorbet-inner-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(9, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
     /*border-style: solid;*/
     /*border-color: red;*/
 }

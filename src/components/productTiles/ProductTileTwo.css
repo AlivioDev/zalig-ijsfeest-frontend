@@ -5,7 +5,7 @@
     flex-grow: 0;
     max-width: 1000px;
     align-items: center;
-    margin: 10px;
+    margin: 50px;
 }
 
 .tile-two-inner-container {
@@ -27,6 +27,10 @@
     margin: 10px;
     /*border-style: solid;*/
     /*border-color: springgreen;*/
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 

@@ -11,47 +11,49 @@ import ProductOptions from "./pages/productOptions/ProductOptions";
 import ShoppingCart from "./pages/shoppingCart/ShoppingCart";
 import Profile from "./pages/profile/Profile";
 import SignUpSuccess from "./pages/signupSuccess/SignUpSuccess";
+import ProductOptions2 from "./pages/productOptions/ProductOptions2";
+
 
 function App() {
+
+
     return (
-    <div className="app">
+        <div className="app">
             <Header/>
 
-                    <Switch>
-                        <Route exact path="/">
-                            <Home/>
-                        </Route>
-                        <Route path="/products">
-                            <Products/>
-                        </Route>
-                        <Route path="/shopping-cart">
-                            <ShoppingCart/>
-                        </Route>
-                        <Route path="/payment">
-                            <Payment/>
-                        </Route>
-                        <Route path="/order-confirmation">
-                            <OrderConfirmation/>
-                        </Route>
-                        <Route path="/admin">
-                            <Admin/>
-                        </Route>
-                        <Route path="/options/:productId">
-                            <ProductOptions/>
-                        </Route>
-                        <Route path="/pickup">
-                            <Pickup/>
-                        </Route>
-                        <Route path="/profile">
-                            <Profile/>
-                        </Route>
-                        <Route path="/signup-success">
-                            <SignUpSuccess/>
-                        </Route>
-                    </Switch>
-
-    </div>
-
+            <Switch>
+                <Route exact path="/">
+                    <Home/>
+                </Route>
+                <Route path="/products">
+                    <Products/>
+                </Route>
+                <Route path="/shopping-cart">
+                    <ShoppingCart/>
+                </Route>
+                <Route path="/payment">
+                    <Payment/>
+                </Route>
+                <Route path="/order-confirmation">
+                    <OrderConfirmation/>
+                </Route>
+                <Route path="/admin">
+                    <Admin/>
+                </Route>
+                <Route path="/options/:productId">
+                    <ProductOptions2/>
+                </Route>
+                <Route path="/pickup">
+                    <Pickup/>
+                </Route>
+                <Route path="/profile">
+                    <Profile/>
+                </Route>
+                <Route path="/signup-success">
+                    <SignUpSuccess/>
+                </Route>
+            </Switch>
+        </div>
     );
 }
 

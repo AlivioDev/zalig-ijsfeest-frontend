@@ -1,8 +1,8 @@
 .flavor-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    width: fit-content;
+    flex-wrap: wrap;
+    width: max-content;
     /*border-style: solid;*/
     /*border-color: black;*/
 }

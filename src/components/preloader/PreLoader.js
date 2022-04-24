@@ -1,11 +1,11 @@
-import Icon from "../../assets/549-ice-cream-scoops-flat.gif";
-import "./Logo.css"
+// import logo from "../../assets/Logo.jpg";
+
 
 function preLoader() {
     return (
         <div className="preloader">
-            <img src={Icon} className="preloader" alt="preloader" width={75} height={75}/>
-            <p>Loading...</p>
+            <img src="../../assets/549-ice-cream-scoops.svg" alt="Pagina wordt geladen"/>
+            {/*<img src={logo} className="logo" alt="logo" width={75} height={75}/>*/}
         </div>
     )
 }

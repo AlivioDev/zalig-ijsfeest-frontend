@@ -7,8 +7,8 @@
     min-height: 1000px;
     flex-shrink: 1;
     flex-grow: 0;
-    border-style: solid;
-    border-color: black;
+    /*border-style: solid;*/
+    /*border-color: black;*/
 }
 
 .home-inner-container {

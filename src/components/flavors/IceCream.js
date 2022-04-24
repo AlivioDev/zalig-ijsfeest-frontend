@@ -5,48 +5,56 @@ import axios from "axios";
 
 
 function IceCream() {
-    const [iceCreamFlavor, setIceCreamFlavor] = useState([]);
+    const [iceCreamFlavor, setIceCreamFlavor] = useState("");
+    const {handleSubmit, register} = useForm({
+        mode: "onChange"
+    });
+
+    function onFormSubmit(data) {
+        console.log(data);
+    }
 
     useEffect(() => {
         async function getIceCreamFlavor() {
             try {
                 const result = await
                     axios.get("http://localhost:8080/open/icecreamflavors");
-                console.log(result.data);
-                setIceCreamFlavor(result.data.name);
+                setIceCreamFlavor(result.data);
             } catch (error) {
                 console.error(error);
             }
         }
+
         getIceCreamFlavor();
     }, []);
 
-    const {register, formState: {errors}} = useForm();
-    console.log(errors);
 
     return (
         <>
-            <div className="flavor-container">
-                {iceCreamFlavor &&
-                    iceCreamFlavor.map((iceCream) => {
-                            return (
-                                <>
-                                    <input
-                                        className="flavor-checkbox"
-                                        type="checkbox"
-                                        {...register
-                                        ("smaak")}
-                                    />
-                                    <label className="flavor-label">
-                                        {iceCream.name};
-                                    </label>
-                                </>
-                            );
-                        }
-                    )}
-            </div>
+            {iceCreamFlavor &&
+                iceCreamFlavor.map((iceCream) => {
+                    return (
+                        <div className="flavor-container" key={iceCream.name}>
+                            <input
+                                onSubmit={handleSubmit(onFormSubmit)}
+                                className="flavor-checkbox"
+                                type="checkbox"
+                                {...register(
+                                    "flavors",
+                                    {
+                                        value: iceCream.name
+                                    })}
+                            />
+                            <label className="flavor-label">
+                                {iceCream.name}
+                            </label>
+                        </div>
+                    );
+                })
+            }
         </>
     );
 }
 
 export default IceCream;
+

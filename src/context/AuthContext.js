@@ -86,11 +86,12 @@ function AuthContextProvider({children}) {
     }
 
     function logout() {
-        console.log("Gebruiker is uitgelogd!");
+        localStorage.clear();
         setAuth({
             ...auth,
             isAuth: false,
         });
+        console.log("Gebruiker is uitgelogd!");
         history.push("/");
     }
 

@@ -6,7 +6,6 @@ import {numberFormat} from "../../helpers/priceFormat";
 import {imagePicker} from "../../helpers/imagePicker";
 import {useParams} from "react-router-dom";
 
-
 function ProductTileTwo() {
     const [product, setProduct] = useState([]);
     const {productId} = useParams();
@@ -16,7 +15,6 @@ function ProductTileTwo() {
             try {
                 const result = await
                     axios.get(`http://localhost:8080/open/products/${productId}`);
-                console.log(result);
                 setProduct(result.data);
             } catch (error) {
                 console.error(error);
@@ -26,16 +24,28 @@ function ProductTileTwo() {
     }, [productId]);
 
 
-    const {register, watch} = useForm();
-    const selectedReferrer = watch("aantal-personen");
+    const {register, handleSubmit, watch} = useForm();
+    const selectedReferrer = watch("options");
+
+    function onFormSubmit(data) {
+        console.log(data);
+    }
 
     return (
         <>
             <div className="tile-two-outer-container">
                 {product &&
                     <div className="tile-two-inner-container">
-                        <div>
-                            <h2 key={product.id}>
+                        <div >
+                            <h2 key={product.id}
+                                onSubmit={handleSubmit(onFormSubmit)}
+                                {...register (
+                                    "productName",
+                                    {
+                                        value: product.productName
+                                    }
+                                )}
+                            >
                                 {product.productName}
                             </h2>
                         </div>
@@ -45,11 +55,11 @@ function ProductTileTwo() {
                                 kies het aantal personen:
                             </p>
                             <select
-                                {...register
-                                ("aantal-personen",
-                                    {
-                                        required: true
-                                    })}>
+                                onSubmit={handleSubmit(onFormSubmit)}
+                                {...register(
+                                    "options"
+                                )}
+                            >
                                 <option
                                     value="optionOne"
                                     disabled={product.numberOfPersonsOne === null}

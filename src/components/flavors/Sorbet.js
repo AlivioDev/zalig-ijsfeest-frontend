@@ -7,8 +7,7 @@ import axios from "axios";
 function Sorbet() {
     const [sorbetFlavor, setSorbetFlavor] = useState([]);
 
-    const {register, formState: {errors}} = useForm();
-    console.log(errors);
+    const {register} = useForm();
 
     useEffect(() => {
         async function getSorbetFlavor() {
@@ -16,7 +15,7 @@ function Sorbet() {
                 const result = await
                     axios.get("http://localhost:8080/open/sorbetflavors");
                 console.log(result.data);
-                setSorbetFlavor(result.data.name);
+                setSorbetFlavor(result.data);
             } catch (error) {
                 console.error(error);
             }
@@ -27,28 +26,24 @@ function Sorbet() {
 
     return (
         <>
-            <div className="flavor-container">
-                {sorbetFlavor &&
-                    sorbetFlavor.map((sorbet) => {
-                            return (
-                                <>
-                                    <input
-                                        className="flavor-checkbox"
-                                        type="checkbox"
-                                        {...register
-                                        ("smaak")}
-                                    />
-                                    <label className="flavor-label">
-                                        {sorbet.name};
-                                    </label>
-                                </>
-                            );
-                        }
-                    )}
-            </div>
-
+            {sorbetFlavor &&
+                sorbetFlavor.map((sorbet) => {
+                    return (
+                        <div className="flavor-container" key={sorbet.name}>
+                            <input
+                                className="flavor-checkbox"
+                                type="checkbox"
+                                {...register
+                                ("smaak")}
+                            />
+                            <label className="flavor-label">
+                                {sorbet.name}
+                            </label>
+                        </div>
+                    );
+                })
+            }
         </>
-
     );
 }
 

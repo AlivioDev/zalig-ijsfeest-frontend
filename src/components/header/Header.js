@@ -7,7 +7,7 @@ import {AuthContext} from "../../context/AuthContext";
 
 function Header() {
     const history = useHistory();
-    const {isAuth, logout} = useContext((AuthContext));
+    const {logout} = useContext((AuthContext));
 
     return (
         <>

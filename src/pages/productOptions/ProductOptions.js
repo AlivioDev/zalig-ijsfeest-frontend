@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./ProductOptions.css";
 import {useForm} from "react-hook-form";
 import Button from "../../components/button/Button";
@@ -8,56 +8,41 @@ import IceCream from "../../components/flavors/IceCream";
 import Sorbet from "../../components/flavors/Sorbet";
 // import {useHistory} from "react-router-dom";
 
-//functie maken dat er max 4 checkboxen kunnen worden geselecteerd
+//functie maken dat er maximaal 4 checkboxen kunnen worden geselecteerd
 
 function ProductOptions() {
-    const [orderLine, setOrderLine] = useState({
-        product: "",
-        variant: "",
-        flavors: "",
-        price: 0.00,
-    });
-
-    const {handleSubmit} = useForm();
-
-    function onFormSubmit(data) {
-        console.log(data);
-    }
+    const {handleSubmit,} = useForm();
 
     // const history = useHistory();
 
-    useEffect(() => {
-        async function createOrderLine(){
-            try{
-                const result = await
-                    axios.post("http:/localhost:8080/orderline",
+    async function onFormSubmit(data) {
+        try {
+            const result = await axios.post("http://localhost:8080/open/orderlines",
                     {
-                        product: orderLine.product,
-                        variant: orderLine.variant,
-                        flavors: orderLine.flavors,
-                        price: orderLine.price,
-                     });
-                console.log(result);
-                setOrderLine(result.data);
-                // history.push("/shopping-cart");
-            }catch(error) {
-                console.error(error);
-            }
+                        flavors: data.flavors,
+                        productName: data.productName,
+                        options: data.options,
+                        persons: data.persons,
+                        price: data.price,
+                    });
+            console.log(result);
+            // history.push("/shopping-cart");
+        } catch (error) {
+            console.error(error);
         }
-        createOrderLine();
-    }, [])
-
+    }
 
     return (
         <>
-
-            <div className="selection-outer-container">
-                <div className="selection-inner-container">
+            <div className="options-outer-container">
+                <div className="options-inner-container">
 
                     <form className="flavor-form" onSubmit={handleSubmit(onFormSubmit)}>
+
                         <ProductTileTwo/>
 
                         <p>U kunt uit de volgende smaken kiezen voor uw ijstaart (maximaal 4 smaken per taart):</p>
+
                         <div className="flavors-section">
 
                             <div className="ice-cream-outer-container">

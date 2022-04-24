@@ -7,8 +7,8 @@
     align-items: center;
     flex-shrink: 1;
     flex-grow: 0;
-    border-style: solid;
-    border-color: orange;
+    /*border-style: solid;*/
+    /*border-color: orange;*/
 }
 
 .tile {
@@ -28,4 +28,5 @@
 .tile:hover {
     box-shadow: 8px 8px 12px 0 rgba(0, 0.3, 0, 0.3);
 }
+
 
