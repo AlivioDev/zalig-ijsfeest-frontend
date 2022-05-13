@@ -17,14 +17,14 @@ function LoginForm() {
     async function onFormSubmit(data) {
         toggleLoading(true);
         try {
-            const result = await axios.post("http://localhost:8080/open/auth",
+            const result = await axios.post("http://localhost:8080/authenticate",
                 {
                     username: data.username,
                     password: data.password,
                 })
             console.log(result);
-            login(result.data);
-            history.push("/products")
+            login(result.data.jwt);
+            history.push(`/profile/${data.username}`)
         } catch(error){
             console.error(error);
         }

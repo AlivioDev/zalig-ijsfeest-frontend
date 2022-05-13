@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./ProductTileOne.css";
 import axios from "axios";
 import Button from "../button/Button";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import {imagePicker} from "../../helpers/imagePicker";
 
 function ProductTileOne() {
@@ -23,6 +23,8 @@ function ProductTileOne() {
         getProduct();
     }, []);
 
+    const {username} = useParams();
+
     return (
         <>
             {product &&
@@ -37,7 +39,7 @@ function ProductTileOne() {
                                 </p>
                                 <Button
                                     type="button"
-                                    onClick={() => history.push(`/options/${product.id}`)}
+                                    onClick={() => history.push(`/options/${product.id}/${username}`)}
                                     description="Samenstellen"
                                 />
                                 </li>

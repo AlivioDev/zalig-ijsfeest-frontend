@@ -12,14 +12,14 @@ export function imagePicker(product) {
     return(
         <img
             src={
-                product.id === 1 ? rond :
-                    product.id === 2 ? ster :
-                        product.id === 3 ? klok :
-                            product.id === 4 ? cassata :
-                                product.id === 5 ? tulband :
-                                    product.id === 6 ? kathedraal :
-                                        product.id === 7 ? bombe :
-                                            product.id === 8 ? profiteroles : "afbeelding niet gevonden"}
+                product.id === 1001 ? rond :
+                    product.id === 1002 ? ster :
+                        product.id === 1003 ? klok :
+                            product.id === 1004 ? cassata :
+                                product.id === 1005 ? tulband :
+                                    product.id === 1006 ? kathedraal :
+                                        product.id === 1007 ? bombe :
+                                            product.id === 1008 ? profiteroles : "afbeelding niet gevonden"}
             alt={`foto van ${product.productName}`}
             width={100}
             height={100}

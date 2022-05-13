@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     box-sizing: border-box;
-    height: 100vh;
+    min-height: 100vh;
     flex-shrink: 1;
     flex-grow: 0;
     /*border-style: solid;*/
@@ -13,6 +13,7 @@
 .options-inner-container {
     display: flex;
     flex-basis: 1200px;
+    min-height: fit-content;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
@@ -24,18 +25,68 @@
     /*border-color: springgreen;*/
 }
 
-.flavor-form {
+.options-form {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    min-height: 80vh;
     justify-content: space-evenly;
     align-items: center;
     flex-basis: 1200px;
     flex-shrink: 1;
     flex-grow: 0;
+    border-style: solid;
+    border-color: blue;
+}
+
+.product-outer-container {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+    flex-grow: 0;
+    max-width: 1000px;
+    align-items: center;
+    margin: 50px;
+    /*border-style: solid;*/
+    /*border-color: yellow;*/
+}
+
+.product-inner-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 600px;
+    align-items: center;
+    margin: 10px 25px;
     /*border-style: solid;*/
     /*border-color: orange;*/
 }
+
+.option-dropdown {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: fit-content;
+    margin: 10px;
+    /*border-style: solid;*/
+    /*border-color: springgreen;*/
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.explanatory-notes{
+    margin-bottom: 20px;
+}
+
+select {
+    border-radius: 5px;
+    box-shadow: 6px 6px 5px 0 rgba(0, 0.2, 0, 0.2);
+}
+
+select:focus {
+    box-shadow: 8px 8px 12px 0 rgba(0, 0.3, 0, 0.3);
+}
+
 
 .flavors-section {
     display: flex;
@@ -54,14 +105,17 @@
     flex-basis: 900px;
     flex-shrink: 1;
     flex-grow: 0;
-    border-style: dotted;
-    border-width: 1px;
-    border-color: blue;
+    box-shadow: 6px 6px 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(196, 196, 196, 0.2);
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
     /*border-style: solid;*/
     /*border-color: springgreen;*/
+}
+
+.ice-cream-outer-container:hover {
+    box-shadow: 8px 8px 12px 0 rgba(0, 0.3, 0, 0.3);
 }
 
 .ice-cream-inner-container {
@@ -81,12 +135,15 @@
     flex-basis: 300px;
     flex-shrink: 1;
     flex-grow: 0;
-    border-style: dotted;
-    border-width: 1px;
-    border-color: blue;
+    box-shadow: 6px 6px 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(196, 196, 196, 0.2);
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
+}
+
+.sorbet-outer-container:hover {
+    box-shadow: 8px 8px 12px 0 rgba(0, 0.3, 0, 0.3);
 }
 
 .sorbet-inner-container {
@@ -106,6 +163,36 @@
 
 p   {
     text-align: center;
+}
+
+.maximumFlavorsError {
+    color: darkred;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.flavor-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: max-content;
+    /*border-style: solid;*/
+    /*border-color: black;*/
+}
+
+.flavor-checkbox {
+    width: fit-content;
+    margin: 5px 10px 5px 5px;
+}
+
+.flavor-label {
+    width: fit-content;
+    margin-bottom: 3px;
+}
+
+
+.flavor-checkbox:checked + .flavor-label {
+    font-weight: bold;
 }
 
 

@@ -13,11 +13,11 @@ function RegisterForm() {
 
     async function onFormSubmit(data) {
         try {
-            const response = await axios.post("http://localhost:8080/open/signup",
+            const response = await axios.post("http://localhost:8080/users",
                 {
                     firstName: data.firstName,
                     lastName: data.lastName,
-                    phone: data.phone,
+                    phoneNumber: data.phoneNumber,
                     email: data.email,
                     username: data.username,
                     password: data.password,
@@ -89,13 +89,13 @@ function RegisterForm() {
                 </section>
 
                 <section className="form-section">
-                    <label htmlFor="phone">
+                    <label htmlFor="phoneNumber">
                         Telefoonnummer:
                     </label>
                     <input
                         type="text"
                         {...register(
-                            "phone",
+                            "phoneNumber",
                             {
                                 required: "Dit veld is verplicht",
                                 minLength: {
