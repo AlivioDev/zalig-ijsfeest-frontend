@@ -1,13 +1,13 @@
-import React from "react";
 import "./ShoppingCart.css"
+import Cart from "../../components/cart/Cart";
+import {useParams} from "react-router-dom";
 
-function ShoppingCart() {
+export default function ShoppingCart() {
+    const {username} = useParams();
+
+
 
     return(
-        <div>
-            ShoppingCart
-        </div>
+        <Cart/>
     )
 }
-
-export default ShoppingCart;

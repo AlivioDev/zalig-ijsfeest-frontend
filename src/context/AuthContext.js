@@ -34,7 +34,7 @@ function AuthContextProvider({children}) {
                     Authorization: `Bearer ${token}`,
                 }
             });
-            console.log(response);
+            // console.log(response);
             setAuth({
                 ...auth,
                 isAuth: true,
@@ -67,7 +67,6 @@ function AuthContextProvider({children}) {
     const history = useHistory();
 
     function login(jwtToken) {
-
         localStorage.setItem("token", jwtToken);
         const decodedToken = jwt_decode(jwtToken);
         console.log(decodedToken);
@@ -81,8 +80,7 @@ function AuthContextProvider({children}) {
                 username: decodedToken.username,
             }
         });
-
-        history.push("/profile");
+        history.push(`/profile/${decodedToken.username}`);
     }
 
     function logout() {
@@ -99,6 +97,7 @@ function AuthContextProvider({children}) {
         isAuth: auth.isAuth,
         login: login,
         logout: logout,
+        user: auth.user,
     };
 
     return (
