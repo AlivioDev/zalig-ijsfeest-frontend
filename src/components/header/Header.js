@@ -30,7 +30,7 @@ function Header() {
                         {isAuth &&
                             <>
                                 <Button
-                                    onClick={() => history.push(`/products`)}
+                                    onClick={() => history.push(`/products/${user.username}`)}
                                     type="button"
                                     description="IJstaarten"
                                 />

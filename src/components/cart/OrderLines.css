@@ -1,0 +1,29 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align:left;
+    background-color: rgba(196, 196, 196, 0.2);
+}
+
+th {
+    font-weight: bolder;
+
+}
+
+td, th {
+    border: 1px solid;
+    text-align: left;
+
+    padding: 5px;
+    margin: 5px;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(196, 196, 196, 0.2);
+}

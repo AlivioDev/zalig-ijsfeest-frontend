@@ -2,7 +2,7 @@ import "./OrderData.css";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {numberFormat} from "../../helpers/priceFormat";
+import {numberFormat} from "../../helpers/numberFormat";
 
 function OrderData() {
     const [orders, setOrders] = useState([]);
@@ -12,13 +12,11 @@ function OrderData() {
         async function fetchOrderData() {
             try {
                 const result = await axios.get(`http://localhost:8080/open/orders/user/${username}`);
-                console.log(result.data);
                 setOrders(result.data);
             } catch (error) {
                 console.error(error);
             }
         }
-
         fetchOrderData();
     }, [username]);
 
