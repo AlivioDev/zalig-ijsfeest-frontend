@@ -15,7 +15,6 @@ function ProductTileOne() {
                 const result = await
                     axios.get("http://localhost:8080/open/products");
                 setProduct(result.data);
-                console.log(result.data);
             } catch (error) {
                 console.error(error);
             }

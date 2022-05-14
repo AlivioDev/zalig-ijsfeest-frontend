@@ -2,7 +2,7 @@ import "./ProductTileTwo.css";
 import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import axios from "axios";
-import {numberFormat} from "../../helpers/priceFormat";
+import {numberFormat} from "../../helpers/numberFormat";
 import {imagePicker} from "../../helpers/imagePicker";
 import {useParams} from "react-router-dom";
 

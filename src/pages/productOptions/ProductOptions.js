@@ -4,7 +4,7 @@ import {useForm} from "react-hook-form";
 import Button from "../../components/button/Button";
 import axios from "axios";
 import {useHistory, useParams} from "react-router-dom";
-import {numberFormat} from "../../helpers/priceFormat";
+import {numberFormat} from "../../helpers/numberFormat";
 import {imagePicker} from "../../helpers/imagePicker";
 
 function ProductOptions() {
@@ -84,14 +84,14 @@ function ProductOptions() {
             const result = await axios.post("http://localhost:8080/open/orderlines",
                 {
                     id: id,
-                    flavors: JSON.stringify(data.flavors),
+                    flavors: (data.flavors).toString(),
                     productName: data.productName,
                     options: data.options,
                     persons: data.persons,
                     price: data.price,
                 });
             console.log(result);
-            // history.push("/shopping-cart");
+            history.push(`/shopping-cart/${username}`);
         } catch (error) {
             console.error(error);
         }
