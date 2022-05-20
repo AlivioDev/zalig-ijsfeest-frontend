@@ -9,8 +9,9 @@
     background-color: #007FFF;
     background-image:
             linear-gradient(to right, #007FFF, #40bfd2);
-    border-style: solid;
-    border-color: black;
+
+    /*border-style: solid;*/
+    /*border-color: black;*/
 }
 
 .success-inner-container {
@@ -22,8 +23,9 @@
     flex-grow: 0;
     margin-left: 10px;
     margin-right: 10px;
-    border-style: solid;
-    border-color: springgreen;
+
+    /*border-style: solid;*/
+    /*border-color: springgreen;*/
 }
 
 .succes {

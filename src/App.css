@@ -1,4 +1,5 @@
 .app {
+    min-height: 100vh;
     background-color: #007FFF;
     background-image:
             linear-gradient(to right, #007FFF, #40bfd2);

@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
 import "./ProductOptions.css";
-import {useForm} from "react-hook-form";
 import Button from "../../components/button/Button";
 import axios from "axios";
 import {useHistory, useParams} from "react-router-dom";
 import {numberFormat} from "../../helpers/numberFormat";
 import {imagePicker} from "../../helpers/imagePicker";
+import PreLoader from "../../components/preloader/PreLoader";
+import {useForm} from "react-hook-form";
 
 function ProductOptions() {
+    const [loading, toggleLoading] = useState(false);
     const [product, setProduct] = useState("");
     const [iceCreamFlavor, setIceCreamFlavor] = useState("");
     const [sorbetFlavor, setSorbetFlavor] = useState("");
@@ -16,85 +18,96 @@ function ProductOptions() {
 
     const count = [];
 
-    const {register, handleSubmit, watch} = useForm();
-    const selectedReferrer = watch("options");
+    const {register, handleSubmit} = useForm();
 
     const {productId} = useParams();
 
     useEffect(() => {
         async function getProduct() {
+            toggleLoading(true);
             try {
                 const result = await
-                    axios.get(`http://localhost:8080/open/products/${productId}`);
+                    axios.get(`http://localhost:8080/products/${productId}`);
                 setProduct(result.data);
             } catch (error) {
                 console.error(error);
             }
+            toggleLoading(false);
         }
+
         getProduct();
     }, [productId]);
 
 
     useEffect(() => {
         async function getIceCreamFlavor() {
+            toggleLoading(true);
             try {
                 const result = await
-                    axios.get("http://localhost:8080/open/icecreamflavors");
+                    axios.get("http://localhost:8080/icecreamflavors");
                 setIceCreamFlavor(result.data);
             } catch (error) {
                 console.error(error);
             }
+            toggleLoading(false);
         }
 
         getIceCreamFlavor();
-    }, []);
+    }, [productId]);
 
     useEffect(() => {
         async function getSorbetFlavor() {
+            toggleLoading(true);
             try {
                 const result = await
-                    axios.get("http://localhost:8080/open/sorbetflavors");
+                    axios.get("http://localhost:8080/sorbetflavors");
                 setSorbetFlavor(result.data);
             } catch (error) {
                 console.error(error);
             }
+            toggleLoading(false);
         }
-        getSorbetFlavor();
-    }, []);
 
+        getSorbetFlavor();
+    }, [productId]);
 
     const history = useHistory();
     const {username} = useParams();
     const date = Date.now();
-    const id = `${username}${date}`
+    const id = `${username}${date}`;
 
     async function onFormSubmit(data) {
         if (data.options === product.numberOfPersonsOne) {
             data.price = product.priceOne;
+            data.persons = null;
         } else if (data.options === product.numberOfPersonsTwo) {
             data.price = product.priceTwo;
+            data.persons = null;
         } else if (data.options === product.numberOfPersonsThree) {
             data.price = product.priceThree;
-        } else if (data.options === product.perPerson) {
+            data.persons = null;
+        } else if (product.productName === "Profiteroles"){
             data.price = product.priceOne * data.persons;
         }
         console.log(data);
-
+        toggleLoading(true);
         try {
-            const result = await axios.post("http://localhost:8080/open/orderlines",
+            const response = await axios.post("http://localhost:8080/orderlines",
                 {
                     id: id,
                     flavors: (data.flavors).toString(),
-                    productName: data.productName,
+                    productName: product.productName,
                     options: data.options,
                     persons: data.persons,
                     price: data.price,
+                    dateCreated: date
                 });
-            console.log(result);
+            console.log(response);
             history.push(`/shopping-cart/${username}`);
         } catch (error) {
             console.error(error);
         }
+        toggleLoading(false);
     }
 
     function handleInput(event) {
@@ -108,27 +121,22 @@ function ProductOptions() {
         }
     }
 
+
     return (
         <>
             <div className="options-outer-container">
+
                 <div className="options-inner-container">
+                    {loading && <PreLoader/>}
 
                     <form className="options-form" onSubmit={handleSubmit(onFormSubmit)}>
                         <div className="product-outer-container">
 
-                            {product &&
+                            {product && product.id !== 1008 ?
                                 <div className="product-inner-container">
                                     <h2 key={product.id}>
                                         {product.productName}
                                     </h2>
-                                    <input className="invisible"
-                                           {...register(
-                                               "productName",
-                                               {
-                                                   value: product.productName
-                                               }
-                                           )}
-                                    />
 
                                     <div className="option-dropdown">
                                         <p className="explanatory-notes">
@@ -136,8 +144,11 @@ function ProductOptions() {
                                         </p>
 
                                         <select
+                                            defaultValue={product.numberOfPersonsOne}
                                             {...register(
-                                                "options"
+                                                "options", {
+                                                    required : "maak een keuze uit het keuzemenu"
+                                                }
                                             )}>
                                             <option
                                                 value={product.numberOfPersonsOne}
@@ -165,26 +176,22 @@ function ProductOptions() {
                                                     `${product.numberOfPersonsThree}     ${numberFormat((product.priceThree))}`
                                                     : ""}
                                             </option>
-
-                                            <option
-                                                value={product.perPerson}
-                                                disabled={product.perPerson === null}
-                                            >
-                                                {product.perPerson ?
-                                                    `Vanaf 6 personen ${numberFormat((product.priceOne))} per persoon`
-                                                    : ""}
-                                            </option>
                                         </select>
-
-                                        {selectedReferrer === product.perPerson &&
-                                            <input
-                                                type="number"
-                                                defaultValue={6}
-                                                min={6}
-                                                {...register("persons")}
-                                            />
-                                        }
                                     </div>
+                                </div>
+
+                            :
+                                <div className="profiteroles">
+                                    <h2 key={product.id}>{product.productName}</h2>
+                                    <h3 className="profiteroles-text">€ 5,- per persoon</h3>
+                                    <h3 className="profiteroles-text">Vanaf 6 personen</h3>
+                                    <p className="explanatory-notes">kies het aantal personen:</p>
+                                    <input
+                                        type="number"
+                                        defaultValue={6}
+                                        min={6}
+                                        {...register("persons")}
+                                    />
                                 </div>
                             }
                             {imagePicker((product))}
@@ -254,7 +261,7 @@ function ProductOptions() {
                         <div className="selection-button">
                             <Button
                                 type="submit"
-                                description="Naar winkelwagentje"
+                                description="Naar winkelmandje"
                                 disabled={maximumFlavors}
                             />
                         </div>

@@ -5,6 +5,7 @@ import Button from "../button/Button";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
 
+
 function Header() {
     const history = useHistory();
     const {isAuth, user, logout} = useContext((AuthContext));
@@ -20,7 +21,6 @@ function Header() {
                                 type="button"
                                 description="Home"
                             />
-
                             <Button
                                 onClick={() => history.goBack()}
                                 type="button"
@@ -35,15 +35,25 @@ function Header() {
                                     description="IJstaarten"
                                 />
                                 <Button
-                                    onClick={() => history.push(`/profile/${user.username}`)}
+                                    onClick={() => history.push(`/orders/${user.username}`)}
                                     type="button"
-                                    description="Mijn Profiel"
+                                    description="Mijn Bestellingen"
+                                />
+                                <Button
+                                    onClick={() => history.push(`/shopping-cart/${user.username}`)}
+                                    type="button"
+                                    description="Winkelmandje"
                                 />
                                 <Button
                                     onClick={logout}
                                     type="button"
                                     description="Uitloggen"
                                 />
+                                    <Button
+                                    onClick={() => history.push(`/dashboard/${user.username}`)}
+                                    type="button"
+                                    description="Dashboard"
+                                    />
                             </>
                         }
                     </nav>

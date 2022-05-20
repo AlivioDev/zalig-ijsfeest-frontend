@@ -24,7 +24,7 @@ function LoginForm() {
                 })
             console.log(result);
             login(result.data.jwt);
-            history.push(`/profile/${data.username}`)
+            history.push(`/orders/${data.username}`)
         } catch(error){
             console.error(error);
         }

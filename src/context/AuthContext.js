@@ -2,6 +2,7 @@ import React, {createContext, useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import PreLoader from "../components/preloader/PreLoader";
 
 export const AuthContext = createContext({});
 
@@ -26,6 +27,8 @@ function AuthContextProvider({children}) {
         }
     }, []);
 
+    //TODO: authenticatie werkt goed, authorisatie gaat nog niet goed, bij get request voor user of admin krijg ik 403 terug
+    // en in backend werkt dat goed, getest met Postman en draait als een zonnetje
     async function fetchUserData(decodedToken, token) {
         try {
             const response = await axios.get(`http://localhost:8080/users/${decodedToken.sub}`, {
@@ -102,7 +105,7 @@ function AuthContextProvider({children}) {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {auth.status === "done" ? children : <img src="../assets/549-ice-cream-scoops-flat.gif" alt="Loading..."/>}
+            {auth.status === "done" ? children : <PreLoader/>}
         </AuthContext.Provider>
     );
 }
