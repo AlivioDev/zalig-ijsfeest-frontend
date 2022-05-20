@@ -1,0 +1,29 @@
+.add-product-outer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /*border-style: solid;*/
+    /*border-color: black;*/
+}
+
+.add-product-inner-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 1000px;
+    height: 400px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+
+    /*border-style: solid;*/
+    /*border-color: blue;*/
+}
+
+.add-product-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

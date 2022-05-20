@@ -1,10 +1,11 @@
 import React from "react";
 import "./Home.css";
-import RegisterForm from "../../components/forms/RegisterForm";
+import SignUpForm from "../../components/forms/SignUpForm";
 import LoginForm from "../../components/forms/LoginForm";
 
 
 function Home() {
+
 
     return (
         <>
@@ -14,7 +15,7 @@ function Home() {
 
             <LoginForm/>
 
-            <RegisterForm/>
+            <SignUpForm/>
             </div>
             </div>
         </>
