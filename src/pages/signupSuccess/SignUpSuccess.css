@@ -7,11 +7,7 @@
     flex-shrink: 1;
     flex-grow: 0;
     background-color: #007FFF;
-    background-image:
-            linear-gradient(to right, #007FFF, #40bfd2);
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
+    background-image: linear-gradient(to right, #007FFF, #40bfd2);
 }
 
 .success-inner-container {
@@ -23,9 +19,6 @@
     flex-grow: 0;
     margin-left: 10px;
     margin-right: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 .succes {

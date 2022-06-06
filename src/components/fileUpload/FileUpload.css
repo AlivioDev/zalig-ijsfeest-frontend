@@ -1,8 +1,7 @@
 .file-upload {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 500px;
     align-items: center;
-
-    /*border-style: solid;*/
-    /*border-color: purple;*/
+    margin: 10px;
 }

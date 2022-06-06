@@ -2,7 +2,7 @@ import React from "react";
 import {numberFormat} from "../../helpers/numberFormat";
 
 
-function OrderLine({orderLine:{id, productName, options, persons, flavors, price}}) {
+function OrderLine({orderLine: {id, productName, options, persons, flavors, price}}) {
 
     return (
 

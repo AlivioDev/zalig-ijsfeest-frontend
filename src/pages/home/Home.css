@@ -7,8 +7,6 @@
     min-height: 1000px;
     flex-shrink: 1;
     flex-grow: 0;
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .home-inner-container {
@@ -19,8 +17,6 @@
     flex-grow: 0;
     margin-left: 10px;
     margin-right: 10px;
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 h1 {

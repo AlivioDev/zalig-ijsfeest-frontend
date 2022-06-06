@@ -2,7 +2,7 @@ import "./Header.css";
 import {useHistory} from "react-router-dom";
 import Logo from "../logo/Logo";
 import Button from "../button/Button";
-import {useContext} from "react";
+import React, {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
 
 
@@ -49,11 +49,15 @@ function Header() {
                                     type="button"
                                     description="Uitloggen"
                                 />
+
+
+                                {user.role === "ADMIN" &&
                                     <Button
-                                    onClick={() => history.push(`/dashboard/${user.username}`)}
-                                    type="button"
-                                    description="Dashboard"
+                                        onClick={() => history.push(`/dashboard/${user.username}`)}
+                                        type="button"
+                                        description="Dashboard"
                                     />
+                                }
                             </>
                         }
                     </nav>

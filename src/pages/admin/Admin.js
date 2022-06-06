@@ -14,10 +14,10 @@ function Admin() {
                 onClick={() => history.push(`/add-product`)}
                 description="Nieuw product aanmaken"
             />
-                <p className="table-text">klik met de rechtermuisknop op een regel voor meer opties</p>
-                <div className="order-grid">
-                    <Orders/>
-                </div>
+            <p className="table-text">klik met de rechtermuisknop op een regel voor meer opties</p>
+            <div className="order-grid">
+                <Orders/>
+            </div>
         </div>
     );
 }

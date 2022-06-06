@@ -15,15 +15,15 @@ function OrderListForAdmin() {
 
 
     const columns = useMemo(() => [
-        {field:"order.id", headerName: "ordernummer"},
-        {field:"order.user.username", headerName:"Gebruikersnaam"},
-        {field:"productName", headerName:"IJstaart"},
-        {field:"flavors", headerName:"Smaken", resizable: true},
-        {field:"options", headerName:"Opties"},
-        {field:"persons", headerName:"Personen"},
-        {field:"order.pickupDate", headerName:"Afhaalmoment"},
-        {field:"order.orderAmount", headerName:"Bedrag"},
-        {field:"order.paymentStatus", headerName:"Betaald"}
+        {field: "order.id", headerName: "ordernummer"},
+        {field: "order.user.username", headerName: "Gebruikersnaam"},
+        {field: "productName", headerName: "IJstaart"},
+        {field: "flavors", headerName: "Smaken", resizable: true},
+        {field: "options", headerName: "Opties"},
+        {field: "persons", headerName: "Personen"},
+        {field: "order.pickupDate", headerName: "Afhaalmoment"},
+        {field: "order.orderAmount", headerName: "Bedrag"},
+        {field: "order.paymentStatus", headerName: "Betaald"}
     ], []);
 
     const defaultColumnSettings = useMemo(() => ({
@@ -43,7 +43,7 @@ function OrderListForAdmin() {
         <>
             <div className="ag-theme-alpine" style={{height: 800, width: 1000}}>
                 <AgGridReact
-                    defaultColDef = {defaultColumnSettings}
+                    defaultColDef={defaultColumnSettings}
                     pagination={true}
                     ref={gridRef}
                     rowData={rowData}
@@ -54,4 +54,5 @@ function OrderListForAdmin() {
         </>
     );
 }
+
 export default OrderListForAdmin;

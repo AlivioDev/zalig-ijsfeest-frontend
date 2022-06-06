@@ -6,9 +6,6 @@
     min-height: 100vh;
     flex-shrink: 1;
     flex-grow: 0;
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .options-inner-container {
@@ -22,9 +19,6 @@
     flex-grow: 0;
     margin-left: 10px;
     margin-right: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 .options-form {
@@ -36,9 +30,6 @@
     flex-basis: 1200px;
     flex-shrink: 1;
     flex-grow: 0;
-
-    /*border-style: solid;*/
-    /*border-color: blue;*/
 }
 
 .product-outer-container {
@@ -49,8 +40,6 @@
     max-width: 1000px;
     align-items: center;
     margin: 50px;
-    /*border-style: solid;*/
-    /*border-color: yellow;*/
 }
 
 .product-inner-container {
@@ -59,8 +48,6 @@
     flex-basis: 600px;
     align-items: center;
     margin: 10px 25px;
-    /*border-style: solid;*/
-    /*border-color: orange;*/
 }
 
 .option-dropdown {
@@ -69,15 +56,13 @@
     min-width: 300px;
     max-width: fit-content;
     margin: 10px;
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 .invisible {
     visibility: hidden;
 }
 
-.explanatory-notes{
+.explanatory-notes {
     margin-bottom: 20px;
 }
 
@@ -97,8 +82,6 @@ select:focus {
     flex-basis: 400px;
     flex-shrink: 1;
     flex-grow: 0;
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .ice-cream-outer-container {
@@ -113,9 +96,6 @@ select:focus {
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 .ice-cream-outer-container:hover {
@@ -129,8 +109,6 @@ select:focus {
     grid-column-gap: 10px;
     grid-row-gap: 0;
 
-    /*border-style: solid;*/
-    /*border-color: red;*/
 }
 
 .sorbet-outer-container {
@@ -157,9 +135,6 @@ select:focus {
     grid-template-rows: repeat(9, 1fr);
     grid-column-gap: 0;
     grid-row-gap: 0;
-
-    /*border-style: solid;*/
-    /*border-color: red;*/
 }
 
 .selection-button {
@@ -167,7 +142,7 @@ select:focus {
     margin-right: auto;
 }
 
-p   {
+p {
     text-align: center;
 }
 
@@ -182,9 +157,6 @@ p   {
     flex-direction: row;
     flex-wrap: wrap;
     width: max-content;
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .flavor-checkbox {
@@ -208,9 +180,6 @@ p   {
     align-items: center;
     height: 200px;
     justify-content: stretch;
-
-    /*border-style: solid;*/
-    /*border-color: blue;*/
 }
 
 .profiteroles-text {

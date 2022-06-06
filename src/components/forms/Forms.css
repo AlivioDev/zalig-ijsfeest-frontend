@@ -5,11 +5,9 @@
     flex-basis: 100px;
     flex-shrink: 1;
     flex-grow: 0;
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
-.form-title  {
+.form-title {
     font-weight: bolder;
     margin: 20px;
     text-align: center;
@@ -22,16 +20,12 @@
     flex-shrink: 1;
     flex-grow: 0;
     margin: 10px;
-    /*border-style: solid;*/
-    /*border-color: red;*/
 }
 
 .form-section {
     display: block;
     padding: 10px;
     width: 100%;
-    /*border-style: solid;*/
-    /*border-color: orange;*/
 }
 
 input {

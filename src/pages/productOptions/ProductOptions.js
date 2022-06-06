@@ -86,10 +86,9 @@ function ProductOptions() {
         } else if (data.options === product.numberOfPersonsThree) {
             data.price = product.priceThree;
             data.persons = null;
-        } else if (product.productName === "Profiteroles"){
+        } else if (product.productName === "Profiteroles") {
             data.price = product.priceOne * data.persons;
         }
-        console.log(data);
         toggleLoading(true);
         try {
             const response = await axios.post("http://localhost:8080/orderlines",
@@ -147,7 +146,7 @@ function ProductOptions() {
                                             defaultValue={product.numberOfPersonsOne}
                                             {...register(
                                                 "options", {
-                                                    required : "maak een keuze uit het keuzemenu"
+                                                    required: "maak een keuze uit het keuzemenu"
                                                 }
                                             )}>
                                             <option
@@ -180,7 +179,7 @@ function ProductOptions() {
                                     </div>
                                 </div>
 
-                            :
+                                :
                                 <div className="profiteroles">
                                     <h2 key={product.id}>{product.productName}</h2>
                                     <h3 className="profiteroles-text">€ 5,- per persoon</h3>

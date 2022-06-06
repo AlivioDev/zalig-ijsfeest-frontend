@@ -9,7 +9,7 @@ import profiteroles from "../assets/profiteroles.jpg";
 import React from "react";
 
 export function imagePicker(product) {
-    return(
+    return (
         <img
             src={
                 product.id === 1001 ? rond :
@@ -24,5 +24,5 @@ export function imagePicker(product) {
             width={100}
             height={100}
         />
-    )
+    );
 }

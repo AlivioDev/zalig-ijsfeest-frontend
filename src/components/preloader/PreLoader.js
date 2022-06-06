@@ -1,4 +1,4 @@
-import iceCreamLoader from "../../assets/549-ice-cream-scoops-flat.gif"
+import iceCreamLoader from "../../assets/549-ice-cream-scoops-flat.gif";
 
 
 function preLoader() {
@@ -7,7 +7,7 @@ function preLoader() {
             className="preloader">
             <img src={iceCreamLoader} alt="Pagina wordt geladen"/>
         </div>
-    )
+    );
 }
 
 export default preLoader;

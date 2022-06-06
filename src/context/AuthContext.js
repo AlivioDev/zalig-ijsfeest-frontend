@@ -8,9 +8,7 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
     const [auth, setAuth] = useState({
-        isAuth: false,
-        user: null,
-        status: "pending",
+        isAuth: false, user: null, status: "pending",
     });
 
     useEffect(() => {
@@ -21,32 +19,25 @@ function AuthContextProvider({children}) {
             fetchUserData(decodedToken, token);
         } else {
             setAuth({
-                ...auth,
-                status: "done",
+                ...auth, status: "done",
             });
         }
     }, []);
 
-    //TODO: authenticatie werkt goed, authorisatie gaat nog niet goed, bij get request voor user of admin krijg ik 403 terug
-    // en in backend werkt dat goed, getest met Postman en draait als een zonnetje
     async function fetchUserData(decodedToken, token) {
         try {
             const response = await axios.get(`http://localhost:8080/users/${decodedToken.sub}`, {
                 headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json", Authorization: `Bearer ${token}`,
                 }
             });
-            // console.log(response);
             setAuth({
-                ...auth,
-                isAuth: true,
-                user: {
+                ...auth, isAuth: true, user: {
                     password: response.data.password,
                     username: response.data.username,
                     id: response.data.id,
-                },
-                status: "done",
+                    role: response.data.authorities[0].authority,
+                }, status: "done",
             });
         } catch (e) {
             console.error(e);
@@ -60,8 +51,7 @@ function AuthContextProvider({children}) {
             }
 
             setAuth({
-                ...auth,
-                status: "done",
+                ...auth, status: "done",
             });
         }
     }
@@ -77,9 +67,7 @@ function AuthContextProvider({children}) {
         fetchUserData(decodedToken, jwtToken);
 
         setAuth({
-            ...auth,
-            isAuth: true,
-            user: {
+            ...auth, isAuth: true, user: {
                 username: decodedToken.username,
             }
         });
@@ -89,25 +77,19 @@ function AuthContextProvider({children}) {
     function logout() {
         localStorage.clear();
         setAuth({
-            ...auth,
-            isAuth: false,
+            ...auth, isAuth: false,
         });
         console.log("Gebruiker is uitgelogd!");
         history.push("/");
     }
 
     const contextData = {
-        isAuth: auth.isAuth,
-        login: login,
-        logout: logout,
-        user: auth.user,
+        isAuth: auth.isAuth, login: login, logout: logout, user: auth.user
     };
 
-    return (
-        <AuthContext.Provider value={contextData}>
-            {auth.status === "done" ? children : <PreLoader/>}
-        </AuthContext.Provider>
-    );
+    return (<AuthContext.Provider value={contextData}>
+        {auth.status === "done" ? children : <PreLoader/>}
+    </AuthContext.Provider>);
 }
 
 export default AuthContextProvider;

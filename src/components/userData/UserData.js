@@ -11,11 +11,18 @@ function UserData() {
 
     useEffect(() => {
         async function fetchUserData() {
+            const token = localStorage.getItem("token");
             toggleLoading(true);
             try {
                 const result = await
-                    axios.get(`http://localhost:8080/users/${username}`);
+                    axios.get(`http://localhost:8080/users/${username}`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        }
+                    });
                 setUserData(result.data);
+                console.log(result.data.authorities[0].authority);
             } catch (error) {
                 console.error(error);
             }
