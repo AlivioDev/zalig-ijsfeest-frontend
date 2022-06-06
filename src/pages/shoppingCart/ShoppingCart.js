@@ -110,6 +110,7 @@ function ShoppingCart() {
             }
             toggleLoading(false);
         }
+
         fetchOrderLineData();
     }, []);
 
@@ -130,6 +131,7 @@ function ShoppingCart() {
             }
         }
     }
+
     deleteExpiredOrderLines();
 
 
@@ -174,7 +176,7 @@ function ShoppingCart() {
             <div className="cart-inner-container">
 
                 <div className="order-lines">
-                    <h3 className="cart-text-black">Winkelwagentje</h3>
+                    <h3 className="cart-text-black">Winkelmandje</h3>
                     <OrderLines orderLines={validOrderLines}/>
                     <h3 className="cart-text-white">Totaalbedrag: {numberFormat(orderAmount)}</h3>
                 </div>

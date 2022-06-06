@@ -25,9 +25,9 @@ function SignUpForm() {
                     username: data.username,
                     password: data.password,
                     authorities: [{
-                            username: data.username,
-                            authority: "USER"
-                        }]
+                        username: data.username,
+                        authority: "USER"
+                    }]
                 });
             console.log(response.data);
             history.push("/signup-success");

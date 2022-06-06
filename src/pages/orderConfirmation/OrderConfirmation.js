@@ -21,7 +21,6 @@ function OrderConfirmation() {
             try {
                 const result = await axios.get(`http://localhost:8080/orders/user/${username}`);
                 setOrders(result.data);
-                console.log(result);
             } catch (error) {
                 console.error(error);
             }
@@ -52,15 +51,18 @@ function OrderConfirmation() {
 
                             {/*TODO: bij meerdere producten in 1 bestelling wordt er maar 1 product gerenderd, refresh nodig voor de resterende producten*/}
                             <div className="orderconfirmation-orderlist-outer-container">
-                                {orders.slice(-1)[0].orderLines.map((orderLine) => {
-                                    return (
-                                        <ul className="orderconfirmation-orderlist-inner-container" key={orderLine.id}>
-                                            <li>IJstaart: {orderLine.productName}</li>
-                                            <li>Aantal personen: {orderLine.options} {orderLine.persons}</li>
-                                            <li>Smaken: {orderLine.flavors}</li>
-                                            <li>Prijs: {numberFormat(orderLine.price)} </li>
-                                        </ul>
-                                    );
+                                {orders.slice(-1)[0].orderLines && orders.slice(-1)[0].orderLines.map((orderLine) => {
+                                    if (Object.keys(orderLine.length > 1)) {
+                                        return (
+                                            <ul className="orderconfirmation-orderlist-inner-container"
+                                                key={orderLine.id}>
+                                                <li>IJstaart: {orderLine.productName}</li>
+                                                <li>Aantal personen: {orderLine.options} {orderLine.persons}</li>
+                                                <li>Smaken: {orderLine.flavors}</li>
+                                                <li>Prijs: {numberFormat(orderLine.price)} </li>
+                                            </ul>);
+                                    }
+                                    ;
                                 })}
                             </div>
                         </>

@@ -3,7 +3,7 @@ import "./OrderHistory.css";
 import Button from "../../components/button/Button";
 import {useHistory, useParams} from "react-router-dom";
 import UserData from "../../components/userData/UserData";
-import OrderData from "../../components/orderData/OrderData"
+import OrderData from "../../components/orderData/OrderData";
 
 
 function OrderHistory() {
@@ -16,7 +16,7 @@ function OrderHistory() {
                 <div className="userdata-inner-container">
                     <UserData/>
                 </div>
-                <div className="order-outer-container" >
+                <div className="order-outer-container">
                     <OrderData/>
                 </div>
                 <div className="order-button">

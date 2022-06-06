@@ -1,5 +1,4 @@
-
- export function numberFormat(number) {
+export function numberFormat(number) {
     return Intl.NumberFormat("nl-NL", {
         style: "currency",
         currency: "EUR",

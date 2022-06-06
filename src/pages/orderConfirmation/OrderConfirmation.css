@@ -2,9 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .orderconfirmation-inner-container {
@@ -17,9 +14,6 @@
     margin: 10px;
     padding: 5px;
     border-radius: 5px;
-
-    /*border-style: solid;*/
-    /*border-color: orange;*/
 }
 
 
@@ -28,9 +22,6 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 
@@ -43,9 +34,6 @@
     margin: 10px;
     padding: 5px;
     border-radius: 5px;
-
-    /*border-style: solid;*/
-    /*border-color: red;*/
 }
 
 .order-confirmation {

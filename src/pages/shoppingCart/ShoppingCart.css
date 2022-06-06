@@ -7,9 +7,6 @@
     justify-content: flex-start;
     align-items: center;
     margin: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: yellow;*/
 }
 
 .cart-inner-container {
@@ -23,9 +20,6 @@
     box-shadow: 6px 6px 5px 0 rgba(0, 0, 0, 0.2);
     background-color: rgba(196, 196, 196, 0.2);
     border-radius: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: blue;*/
 }
 
 .order-lines {
@@ -36,9 +30,6 @@
     flex-shrink: 1;
     align-items: center;
     margin: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .cart-text-black {
@@ -65,9 +56,6 @@
     box-shadow: 6px 6px 5px 0 rgba(0, 0, 0, 0.2);
     background-color: rgba(196, 196, 196, 0.2);
     border-radius: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: blue;*/
 }
 
 .shopping-cart-form-inner-container {
@@ -78,9 +66,6 @@
     flex-shrink: 1;
     align-items: center;
     margin: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 .decoration:link {
@@ -114,9 +99,6 @@
     border-radius: 5px;
     color: black;
     margin: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: #FFFFFF;*/
 }
 
 .dropdown-header {
@@ -124,11 +106,6 @@
     text-align: left;
     width: 300px;
     color: #FFFFFF;
-
-
-
-    /*border-style: solid;*/
-    /*border-color: springgreen;*/
 }
 
 .dropdown-list {
@@ -159,15 +136,6 @@
     flex-direction: column;
     align-items: center;
 }
-
-/*.shopping-orderData-form-choice-header {*/
-/*    font-weight: bolder;*/
-/*    margin: 10px;*/
-/*}*/
-
-/*.chosen {*/
-/*    color: #FFFFFF;*/
-/*}*/
 
 .submit-order {
     display: flex;

@@ -7,9 +7,6 @@
     flex-grow: 0;
     margin: 10px;
     padding-top: 25px;
-
-    /*border-style: solid;*/
-    /*border-color: black;*/
 }
 
 
@@ -22,10 +19,6 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
-
-    /*border-style: solid;*/
-    /*border-color: orange;*/
-
 }
 
 .table-text {

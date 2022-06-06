@@ -94,17 +94,19 @@ function AddProduct() {
                             "priceTwo"
                         )}
                     />
-                </div>
 
-                <FileUpload/>
-
-                <div className="add-product-button">
-                    <Button
-                        type="submit"
-                        description="maak product aan"
-                    />
+                    <div className="add-product-button">
+                        <Button
+                            type="submit"
+                            description="maak product aan"
+                        />
+                    </div>
                 </div>
             </form>
+
+            <p className="upload-product-picture">Upload de product foto:</p>
+            <FileUpload/>
+
         </div>
     );
 }

@@ -23,6 +23,7 @@ function ProductTile() {
             }
             toggleLoading(false);
         }
+
         getProduct();
     }, []);
 
@@ -35,17 +36,17 @@ function ProductTile() {
                 <div className="product-tiles">
                     {product.map((product) => {
                         return (
-                            <ul key={product.id} >
+                            <ul key={product.id}>
                                 <li className="tile">
                                     {imagePicker((product))}
-                                <p>
-                                    {product.productName}
-                                </p>
-                                <Button
-                                    type="button"
-                                    onClick={() => history.push(`/options/${product.id}/${username}`)}
-                                    description="Samenstellen"
-                                />
+                                    <p>
+                                        {product.productName}
+                                    </p>
+                                    <Button
+                                        type="button"
+                                        onClick={() => history.push(`/options/${product.id}/${username}`)}
+                                        description="Samenstellen"
+                                    />
                                 </li>
                             </ul>
                         );
